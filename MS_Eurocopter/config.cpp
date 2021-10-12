@@ -162,3 +162,18 @@ class cfgVehicles
 		availableForSupportTypes[] = {"Drop", "Transport"};
 	};
 };
+
+class CfgFunctions
+{
+	class MS_Eurocopter
+	{
+		class functions
+		{
+			class deployBoard
+			{
+				file="\MS_Eurocopter\functions\fn_deployBoard.sqf";
+				postInit=1;
+			};
+		};
+	};
+};

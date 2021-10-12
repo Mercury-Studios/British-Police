@@ -64,6 +64,7 @@ class CfgWeapons
 	};
 	class SCO19Helmet : H_HelmetB
 	{
+		scope = 1;
 		author = "Mercury Studios - Silence\Zelo";
 		weaponPoolAvailable = 1;
 		displayName = "[MS] SCO-19 Helmet";

@@ -587,7 +587,7 @@ weapons[] = {};
 		scopeCurator=2;			// scope 2 means it's available in Zeus mode (0 means hidden)
 		crew 	= "PR_RPUOfficer"; 	/// we need someone to fit into the car
 		side	= 1; 			/// civilian car should be on civilian side
-		faction	= BLU_F;		/// and with civilian faction
+		faction	= "pr_police";		/// and with civilian faction
 
 		tf_hasLRradio = 1; 
 emergencySiren = 1;
@@ -712,7 +712,7 @@ emergencySiren = 1;
 		scopeCurator=2;			// scope 2 means it's available in Zeus mode (0 means hidden)
 		crew 	= "PR_ARVOfficer"; 	/// we need someone to fit into the car
 		side	= 1; 			/// civilian car should be on civilian side
-		faction	= BLU_F;		/// and with civilian faction
+		faction	= "pr_police";		/// and with civilian faction
 
 		tf_hasLRradio = 1; 
 emergencySiren = 1;

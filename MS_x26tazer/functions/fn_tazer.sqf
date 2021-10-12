@@ -1,4 +1,13 @@
-titleText ["x26 Init: True","PLAIN"];
+/*
+	Execution On: Client > Server
+
+	Purpose: Sets up the taser
+
+	Made by: Silence/Stevio/OpticCobra
+
+*/
+
+//titleText ["x26 Init: True","PLAIN"];
 
 mst_fnc_ppe = {
     params["_tazedman"];

@@ -1,58 +1,47 @@
-fnc = {
-  if (swingCount == 1) then {p = getPosATL fat, pl = p select 0; p1 = p select 1, ps = p select 2; fat setPos [pl,p1,ps]};
-};
+/*
+	Execution On: Client/Server
 
-fncpull = {
-    fat setPosATL p;
-};
+	Made by: OpticCobra
 
-fat = this;
-isUsingEnforcer = false;
-enforcerUsed = false;
-timesUsed = 1;
-swingCount = 1;
-isPulledBack = false;
+*/
 
-player addAction ["Deploy Enforcer", {
-wpn = primaryWeapon player;
-if (wpn == "MS_Enforcer") then {
-fat = "bottle" createVehicle position player;
-fat setPos (player modelToWorld [0,0,1.2]);
-dir = vectorDir player;
-up = vectorUp player;
-fat setVectorDir dir;
-fat setVectorUp up;
-fat enableSimulation false;
-fat allowDamage false;
-player removeWeapon wpn;
-act = player addAction ["Swing Enforcer",{
-    if (isPulledBack) then {
-        isPulledBack = false;
-        if (timesUsed >= 3) then {
-            fat say3D "doorDestroy";
-            swingCount = 1;
-            building = nearestObjects [player, ["Building"], 30] select 0;
-            _class = configFile >> "CfgVehicles" >> typeOf building; 
-            _num = getNumber (_class >> "numberofdoors");
-            hint str _num;
-            for "_i" from 1 to _num do { 
-            var = format ["bis_disabled_Door%1", 0, i];
-            if (var distance player < 3) then {
-                    anim = format ["Door%1_rot", _i];
-                    building animate[anim, 1]; 
-                    building setVariable[var,1,true];
-                    timesUsed = 1;
-                    player removeAction act;
-                    player removeAction act2;
-                };
-            };
-         } else {
-            isUsingEnforcer = true,
-            fat say3D "doorDestroy";
-            while {isUsingEnforcer} do {call fnc, sleep 0.1; call fnc, sleep 0.1, call fnc, sleep 0.1, call fnc; call fncpull; swingCount = 2; timesUsed = timesUsed + 1; swingCount = 1;
-            waitUntil {timesUsed >= 2}; waitUntil {enforcerUsed}; isUsingEnforcer = false, sleep 0.2};
-        };
-    } else {
-        hint "You Need To Pull The Enforcer Back!";
-    };
-}];
+#include "\a3\editor_f\Data\Scripts\dikCodes.h"
+
+["Project Reality - British Emergency Services","Enforcer1", "Enforcer",
+{
+	if (currentWeapon player isKindOf "MS_Enforcer") then
+	{
+		_playerPos = position player;
+		_nearestBuilding = nearestBuilding player;
+		_distancetohouse = _playerPos distance _nearestBuilding;
+
+		private "_intersects";
+		private _begin = ASLtoATL eyepos player;
+		private  _end = _begin vectorAdd (eyeDirection player vectorMultiply 1.5);
+		{
+			_intersects = ([cursorObject, _x] intersect [_begin,_end]);
+			if (count (_intersects select 0) > 0) exitwith {_intersects}
+		} forEach  ["VIEW","GEOM","FIRE"];
+		if (currentWeapon player isKindOf "MS_Enforcer" && (count (_intersects select 0) > 0)) then
+		{
+			private _seed = [1,101] call BIS_fnc_randomInt;
+			if (count (_intersects select 0) > 0 and _seed > 40) then
+			{
+				[cursortarget, ["DoorKickSound", 100, 1]] remoteExec ["say3D"];
+				_select_door = format ["%1_rot", (_intersects select 0 select 0)];
+				cursorObject animate [_select_door, 1, 8];
+			}
+			else
+			{
+				[cursortarget, ["Smash", 100, 1]] remoteExec ["say3D"];
+				[] spawn
+				{
+					disableUserInput true;
+					sleep 0.7;
+					disableUserInput false;
+				};
+			};
+		};
+	};
+}
+, "", [DIK_B, [false, true, false]]] call CBA_fnc_addKeybind;

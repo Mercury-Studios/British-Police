@@ -185,7 +185,7 @@ class cfgGlasses
 	class MS_Base: None
 	{
 		author = "Silence";
-		scope = 2;
+		scope = 1;
 		weaponPoolAvailable = 1;
 		picture = "\MS_PR\ms_logo.jpg";
 		mass = 4;
@@ -6578,14 +6578,30 @@ class cfgWeapons
 	};
 };
 
+/*
+*/
 class CfgSounds {
 	sounds[] = {};
-	class Wail {
+	class DoorKickSound
+	{
+        name = "DoorKickSound";
+        sound[] = {"\MS_PR\sounds\DoorKickSound.ogg", 1,1};
+        titles[] = {};
+    };
+    class Smash
+    {
+        name = "Smash";
+        sound[] = {"\MS_PR\sounds\Smash.ogg", 1,1};
+        titles[] = {};
+    };
+	class Wail 
+	{
 		name = "Wail";
 		sound[] = {"\MS_PR\sounds\Wail.ogg", db20, 1};
 		titles[] = {0, ""};
 	};
-	class YelpFinal {
+	class YelpFinal 
+	{
 		name = "YelpFinal";
 		sound[] = {"\MS_PR\sounds\YelpFinal.ogg", 600, 1};
 		titles[] = {0, ""};
@@ -6620,11 +6636,13 @@ class CfgFunctions
 				postInit = 1;
 				file = "\MS_PR\functions\fn_jawsInit.sqf";
 			};
+			/*
 			class panicButton
 			{
 				postInit = 1;
 				file = "\MS_PR\functions\trigger.sqf";
 			}
+			*/
 		};
 	};
 };
