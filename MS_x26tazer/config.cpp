@@ -56,7 +56,6 @@ class CfgWeapons//beginning of our cfgWeapons entry
         //requiredaddons[] = {};
         //requiredversion = 0.1;
         //units[] = {};
-        //weapons[] = {"bek_makarov"};//testingthisdisabled
         displayName = "X26 Tazer";//Our item's name in the UI
         model = "\MS_x26tazer\tazera3";//relative path to the p3d file. The p3d suffix is likely unnecessary.
         picture = "\MS_x26tazer\ms_logo.jpg";//UI image.

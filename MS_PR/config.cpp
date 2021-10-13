@@ -6349,7 +6349,7 @@ class cfgWeapons
 
 		handAnim[] = {"OFP2_ManSkeleton", "\a3\weapons_f\LongRangeRifles\EBR\data\Anim\ebr.rtm"}; /// MX hand animation actually fits this rifle well
 		dexterity = 1.8;
-		modes[] = {"FullAuto"}; /// Includes fire modes for AI
+		modes[] = {"FullAuto", "Semi"}; /// Includes fire modes for AI
 
     ////////////////////////////////////////////////////// NO OPTICS ///////////////////////////////////////////////////////////
 	class Semi: Mode_SemiAuto /// Pew
@@ -6437,7 +6437,7 @@ class cfgWeapons
 
 		handAnim[] = {"OFP2_ManSkeleton", "\A3\Weapons_F_Gamma\Smgs\pdw2000\data\Anim\SMG_03.rtm"}; /// MX hand animation actually fits this rifle well
 		dexterity = 1.8;
-		modes[] = {"FullAuto"}; /// Includes fire modes for AI
+		modes[] = {"Full", "Semi"}; /// Includes fire modes for AI
 
     ////////////////////////////////////////////////////// NO OPTICS ///////////////////////////////////////////////////////////
 	class Semi: Mode_SemiAuto /// Pew
