@@ -31,18 +31,30 @@ class cfgVehicles
         };
     };
 };
-/*
+*/
+
+class Mode_SemiAuto;
+class Mode_Burst;
+class Mode_FullAuto;
+class WeaponSlotsInfo;
+
+class ItemCore;
+class SlotInfo;
+class MuzzleSlot;
+class CowsSlot;
+class PointerSlot;
+class UnderBarrelSlot;
+class Rifle_Base_F;
+
 class cfgWeapons
 {
-	class Mode_FullAuto;
-	class Mode_SemiAuto;
-	class hlc_ar15_base;
-	class AR15_Base: hlc_ar15_base// arifle_SPAR_01_base_F /// Just basic values common for all testing rifle variants
+	class hlc_G36_base; // arifle_SPAR_01_base_F;
+	class AR15_Base: hlc_G36_base// arifle_SPAR_01_base_F /// Just basic values common for all testing rifle variants
 	{
-		//magazines[] = {""}; /// original custom made magazines and a group of several standardized mags
+		magazines[] = {""}; /// original custom made magazines and a group of several standardized mags
 		descriptionShort = "A clean rifle developed by Armalite";//tooltip text
         class Library {
-			libtextdesc = "A clean rifle developed by Armalite";//another description
+        libtextdesc = "A clean rifle developed by Armalite";//another description
         };
 		descriptionUse = "Armalite";
 		reloadAction = "GestureReloadMX"; /// MX hand animation actually fits this rifle well
@@ -62,9 +74,9 @@ class cfgWeapons
 		distanceZoomMax = 300;
 /////////////////////////////////////////////////////  I R O N S I G H T S  /////////////////////////////////////////////////////
 
-		handAnim[] = {"OFP2_ManSkeleton", "\A3\Weapons_F\Rifles\MX\data\Anim\MX_cqc.rtm"}; /// MX hand animation actually fits this rifle well
+		handAnim[] = {"OFP2_ManSkeleton", "\a3\weapons_f_exp\Rifles\SPAR_01\data\Anim\SPAR_01.rtm"}; /// MX hand animation actually fits this rifle well
 		dexterity = 1.8;
-		modes[] = {"Semi", "Full"}; /// Includes fire modes for AI
+		modes[] = {"FullAuto", "Semi"}; /// Includes fire modes for AI
 
     ////////////////////////////////////////////////////// NO OPTICS ///////////////////////////////////////////////////////////
 	class Semi: Mode_SemiAuto /// Pew
@@ -90,7 +102,6 @@ class cfgWeapons
 			begin2[] = { "A3\sounds_f\weapons\silenced\silent-08", db-1, 1, 200 };
 			soundBegin[] = { begin1, 0.5, begin2, 0.5 };
 		};
-
 		reloadTime = 0.096; /// means some 625 rounds per minute
 		dispersion = 0.00087; /// A bit less than 3 MOA
 
@@ -104,10 +115,10 @@ class cfgWeapons
 		sounds[] = {StandardSound};
 		class BaseSoundModeType
 		{
-			weaponSoundEffect  = "DefaultRifle";//DefaultHandgun
-			closure1[] = {"A3\sounds_f\weapons\closure\closure_rifle_1", 0.235142, 1, 30};//"sound file", volume modifier, unknown, audible distance in meters
-			closure2[] = {"A3\sounds_f\weapons\closure\closure_rifle_2", 0.235142, 1.100000, 30};
-			soundClosure[] = {"closure1", 0.500000, "closure2", 0.500000};
+		weaponSoundEffect  = "DefaultRifle";//DefaultHandgun
+		closure1[] = {"A3\sounds_f\weapons\closure\closure_rifle_1", 0.235142, 1, 30};//"sound file", volume modifier, unknown, audible distance in meters
+		closure2[] = {"A3\sounds_f\weapons\closure\closure_rifle_2", 0.235142, 1.100000, 30};
+		soundClosure[] = {"closure1", 0.500000, "closure2", 0.500000};
 		};
 		class StandardSound: BaseSoundModeType
 		{
@@ -125,40 +136,16 @@ class cfgWeapons
 		reloadTime = 0.096; /// means some 625 rounds per minute
 		dispersion = 0.00087; /// A bit less than 3 MOA
 
-		memoryPointCamera = "eye";//the named selection in our model.p3d's memory LOD to be used for the camera's position when in ADS view (Aim Down Sights)
+        memoryPointCamera = "eye";//the named selection in our model.p3d's memory LOD to be used for the camera's position when in ADS view (Aim Down Sights)
 		minRange = 10; minRangeProbab = 0.5; 	/// Task Force Balance black magic - this is the probability which AI thinks it would hit target at set range with
 		midRange = 10; midRangeProbab = 0.7; 	/// it is no real probability of hit, just used for AI to compute if the shot is worth to take - AI chooses highest
 		maxRange = 10; maxRangeProbab = 0.3; 	/// probability of the weapon, does some calculation and compares it with calculated probability of other weapons
 	};
-	/*
-	class WeaponSlotsInfo : WeaponSlotsInfo
-	{
-		holsterOffset = "holster";//named selection in the Memory LOD for the pistol's position when holstered. If not included the center is used. (Center of scene I believe, not center of geo)
-		holsterScale = 1;//scale of model in holster
-		mass = 20;
-		allowedSlots[] = {701,801,901};//what storage slots this item can "fit" in — clothing (701), vest(801), backpack(901).
-		class MuzzleSlot : SlotInfo
-		{
-			linkProxy = "\A3\data_f\proxies\weapon_slots\MUZZLE";
-			compatibleItems[] = {"", ""};//What items (classname) can be used in our weapon's MuzzleSlot (the model's center point is placed on the weapon's MuzzleProxy).
-		};
-		class CowsSlot : SlotInfo//Top / optic slot
-		{
-			linkProxy = "\a3\data_f\proxies\weapon_slots\top";
-			compatibleItems[] = {"", ""};
-		};
-		class PointerSlot : SlotInfo//side slot
-		{
-			linkProxy = "\a3\data_f\proxies\weapon_slots\SIDE";
-			compatibleItems[] = {"","",""};
-		};
-	};
-	//
-	};
+};
 	class MS_LMTAR15: AR15_Base
 	{
-		scope = 1; /// should be visible and useable in game
-		displayName = "AR-15 (LMT Defender)"; /// some name
+		scope = 2; /// should be visible and useable in game
+		displayName = "AR-15 (Black)"; /// some name
 		model = "\MS_AR15\LMTAR15_Standard"; /// path to model
 
 		picture = "\MS_PR\ms_logo.jpg"; /// different accessories have M, S, T instead of X
@@ -169,4 +156,3 @@ class cfgWeapons
 		muzzles[] = {this}; /// to be able to switch between bullet muzzle and TGL
 	};
 };
-*/

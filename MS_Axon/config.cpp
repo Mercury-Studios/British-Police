@@ -15,7 +15,7 @@ class cfgGlasses
 	class MS_Base: None
 	{
 		author = "Silence";
-		scope = 1;
+		scope = 0;
 		weaponPoolAvailable = 1;
 		picture = "\MS_PR\ms_logo.jpg";
 		mass = 4;

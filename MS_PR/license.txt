@@ -9,7 +9,7 @@ https://www.bohemia.net/community/licenses/arma-public-license-nd License (APL-N
 You are permitted to do the following:
 
 YOU CAN, Use this mod on any server, so long as it IS NOT monetised.
-YOU CAN, Under the APL-SA terms, modify the VESTS, AND ONLY THE VESTS, made by the VSM Team and Military Gear Pack Creators.
+YOU CAN, Under the APL-SA terms, modify the VESTS and helmets, made by the VSM Team and Military Gear Pack Creators.
 YOU CAN, Contact me for permission to use on a life/roleplay/monetised server.
 https://www.bohemia.net/community/licenses/arma-public-license-share-alike License (APL-SA)
 
