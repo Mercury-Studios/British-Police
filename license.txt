@@ -1,0 +1,15 @@
+Permission to redistribute, modify, or claim ownership of this software and associated files is hereby revoked if you are not a Mercury Studios developer.
+
+Any assets found in these files belong to respective owners, but mainly Silence and StevioUK.
+Permission for Ivory Cars and the SIG-516 has been granted to Silence, on behalf of Mercury Studios.
+
+You may not sell this software or associated files without explicit permission from Silence and/or StevioUK.
+> Files under Ivory or JAS are a no-no regardless of permission from us.
+
+You may not use the software or associated SOURCE files without explicit permission from Silence and/or StevioUK.
+
+By downloading or submitting any files to this repository you agree that you will follow this license.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE.
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

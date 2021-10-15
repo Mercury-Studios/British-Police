@@ -6500,7 +6500,7 @@ class cfgWeapons
 };
 	class MS_SIG516: 516_Base
 	{
-		scope = 2; /// should be visible and useable in game
+		scope = 0; /// should be visible and useable in game
 		displayName = "SIG-516"; /// some name
 		model = "\MS_PR\sig516"; /// path to model
 
@@ -6513,7 +6513,7 @@ class cfgWeapons
 	};
 	class MS_SIG516PDW: 516_Base
 	{
-		scope = 2; /// should be visible and useable in game
+		scope = 0; /// should be visible and useable in game
 		displayName = "SIG-516 (PDW-Stock)"; /// some name
 		model = "\MS_PR\sig516pdw"; /// path to model
 

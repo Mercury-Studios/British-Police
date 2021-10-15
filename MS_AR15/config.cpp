@@ -9,7 +9,29 @@ class CfgPatches
 		magazines[] = {""};
     };
 };
-
+/*
+class cfgVehicles
+{
+	class Headgear_Base_F;
+    class MS_LMTAR15: Headgear_Base_F
+    {
+        scope = 2;
+        scopeCurator = 2;
+        displayName = "LMT Defender AR-15";
+        author = "Silence";
+        vehicleClass = ItemsHeadgear;
+        model = "\MS_AR15\LMTAR15_Standard";
+        class TransportItems
+        {
+            class MS_Weapon_AR15
+            {
+                name = MS_Weapon_AR15;
+                count = 1;
+            };
+        };
+    };
+};
+/*
 class cfgWeapons
 {
 	class Mode_FullAuto;
@@ -131,11 +153,11 @@ class cfgWeapons
 			compatibleItems[] = {"","",""};
 		};
 	};
-	*/
+	//
 	};
 	class MS_LMTAR15: AR15_Base
 	{
-		scope = 2; /// should be visible and useable in game
+		scope = 1; /// should be visible and useable in game
 		displayName = "AR-15 (LMT Defender)"; /// some name
 		model = "\MS_AR15\LMTAR15_Standard"; /// path to model
 
@@ -147,3 +169,4 @@ class cfgWeapons
 		muzzles[] = {this}; /// to be able to switch between bullet muzzle and TGL
 	};
 };
+*/
