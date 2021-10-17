@@ -10,7 +10,6 @@ class CfgPatches
 			"PR_ARVOfficer",
 			"PR_Ambulance",
 			"PR_AmbulanceHART",
-			"PR_CTSFOBeret",
 			"PR_CTSFOHK",
 			"PR_CTSFOMCX",
 			"PR_CTSFOSRO",
@@ -51,6 +50,7 @@ class CfgPatches
 			"PR_ProwlerArmed",
 			"PR_RapidSUV",
 			"PR_HatchbackRapid",
+			"PR_HEMSTaru",
 			"PR_ProwlerRapid"
 		};
 		weapons[] = 
@@ -215,17 +215,21 @@ class CfgVehicles
 		uniformClass = "PR_CTSFOUniform"; //the uniform item
 		hiddenSelections[] = {"Camo"};
 		hiddenSelectionsTextures[] = {"\MS_PR\Uniforms\Data\clothing1_ctsfo_co.jpg"};
-		weapons[] = {MS_MCXRattlerBlack, ms_tazer_yellow};				// Which weapons the character has.
-		respawnWeapons[] = {MS_MCXRattlerBlack, ms_tazer_yellow};		// Which weapons the character respawns with.
+		weapons[] = {MS_MCXBlack, ms_tazer_yellow};				// Which weapons the character has.
+		respawnWeapons[] = {MS_MCXBlack, ms_tazer_yellow};		// Which weapons the character respawns with.
 		Items[] = {FirstAidKit};				// Which items the character has.
 		RespawnItems[] = {FirstAidKit};			// Which items the character respawns with.
-		magazines[] = {Chemlight_green, Chemlight_green};				// What ammunition the character has.
-		respawnMagazines[] = {Chemlight_green, Chemlight_green};	
-		linkedItems[] = {MS_FACP_CTSFO, MS_CTSFOCore, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
-		respawnLinkedItems[] = {MS_FACP_CTSFO, MS_CTSFOCore, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
+		magazines[] = {hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, Chemlight_green, Chemlight_green};				// What ammunition the character has.
+		respawnMagazines[] = {hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, Chemlight_green, Chemlight_green};	
+		linkedItems[] = {MS_JPC_Teamleader, MS_Opscore_CTSFO, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles_OPFOR};
+		respawnLinkedItems[] = {MS_JPC_Teamleader, MS_Opscore_CTSFO, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles_OPFOR};
 	};
 	class PR_CTSFOHK : B_Soldier_base_F
 	{
+		class EventHandlers : EventHandlers
+		{
+			init = "(_this select 0) addPrimaryWeaponItem 'optic_holosight_smg_blk_f', (_this select 0) addPrimaryWeaponItem 'jas_sfpeq_516_top_blk' ";
+		};
 		author = "Mercury Studios - Silence"
 		_generalMacro = "B_Soldier_F"; //unsure what this does
 		scope = 2;
@@ -241,17 +245,21 @@ class CfgVehicles
 		respawnWeapons[] = {hlc_rifle_416D10_st6};		// Which weapons the character respawns with.
 		Items[] = {FirstAidKit};				// Which items the character has.
 		RespawnItems[] = {FirstAidKit};			// Which items the character respawns with.
-		magazines[] = {Chemlight_green, Chemlight_green};				// What ammunition the character has.
-		respawnMagazines[] = {Chemlight_green, Chemlight_green};	
-		linkedItems[] = {MS_CTSFOPlateCarrier, MS_CTSFOCore, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
-		respawnLinkedItems[] = {MS_CTSFOPlateCarrier, MS_CTSFOCore, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
+		magazines[] = {hlc_30rnd_556x45_SOST_L5, hlc_30rnd_556x45_SOST_L5, hlc_30rnd_556x45_SOST_L5, Chemlight_green, Chemlight_green};				// What ammunition the character has.
+		respawnMagazines[] = {hlc_30rnd_556x45_SOST_L5, hlc_30rnd_556x45_SOST_L5, hlc_30rnd_556x45_SOST_L5, Chemlight_green, Chemlight_green};	
+		linkedItems[] = {MS_MMACCTSFO_Light, MS_Airframe_CTSFO, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles_OPFOR};
+		respawnLinkedItems[] = {MS_MMACCTSFO_Light, MS_Airframe_CTSFO, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles_OPFOR};
 	};
 	class PR_CTSFO516 : B_Soldier_base_F
 	{
+		class EventHandlers : EventHandlers
+		{
+			init = "(_this select 0) addPrimaryWeaponItem 'optic_holosight_blk_f', (_this select 0) addPrimaryWeaponItem 'jas_sfpeq_516_top_blk', (_this select 0) addPrimaryWeaponItem 'hlc_muzzle_sf3p_556', (_this select 0) addPrimaryWeaponItem 'jas_sig516_rail_cover_right' ";
+		};
 		author = "Mercury Studios - Silence"
 		_generalMacro = "B_Soldier_F"; //unsure what this does
-		scope = 1;
-		scopeCurator = 1;
+		scope = 2;
+		scopeCurator = 2;
 		displayName = "[PR] CTSFO (SIG 516, 5.56)";
 		faction = "pr_police";
 		editorSubcategory = "pr_police_sco";
@@ -259,17 +267,21 @@ class CfgVehicles
 		uniformClass = "PR_CTSFOUniform"; //the uniform item
 		hiddenSelections[] = {"Camo"};
 		hiddenSelectionsTextures[] = {"\MS_PR\Uniforms\Data\clothing1_ctsfo_co.jpg"};
-		weapons[] = {MS_SIG516};				// Which weapons the character has.
-		respawnWeapons[] = {MS_SIG516};		// Which weapons the character respawns with.
+		weapons[] = {JAS_SIG516_14_5_CTR_Blk};				// Which weapons the character has.
+		respawnWeapons[] = {JAS_SIG516_14_5_CTR_Blk};		// Which weapons the character respawns with.
 		Items[] = {FirstAidKit};				// Which items the character has.
 		RespawnItems[] = {FirstAidKit};			// Which items the character respawns with.
-		magazines[] = {Chemlight_green, Chemlight_green};				// What ammunition the character has.
-		respawnMagazines[] = {Chemlight_green, Chemlight_green};	
-		linkedItems[] = {MS_LBT6094_CTSFOAlt, MS_CTSFOCore, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
-		respawnLinkedItems[] = {MS_LBT6094_CTSFOAlt, MS_CTSFOCore, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
+		magazines[] = {hlc_30rnd_556x45_SOST_L5, hlc_30rnd_556x45_SOST_L5, hlc_30rnd_556x45_SOST_L5, Chemlight_green, Chemlight_green};				// What ammunition the character has.
+		respawnMagazines[] = {hlc_30rnd_556x45_SOST_L5, hlc_30rnd_556x45_SOST_L5, hlc_30rnd_556x45_SOST_L5, Chemlight_green, Chemlight_green};	
+		linkedItems[] = {MS_CTSFOPlateCarrier, MS_CTSFOCore, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
+		respawnLinkedItems[] = {MS_CTSFOPlateCarrier, MS_CTSFOCore, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
 	};
 	class PR_CTSFOSRO : B_Soldier_base_F
 	{
+		class EventHandlers : EventHandlers
+		{
+			init = "(_this select 0) addPrimaryWeaponItem 'hlc_optic_zf95base' ";
+		};
 		author = "Mercury Studios - Silence"
 		_generalMacro = "B_Soldier_F"; //unsure what this does
 		scope = 2;
@@ -285,13 +297,17 @@ class CfgVehicles
 		respawnWeapons[] = {hlc_rifle_awmagnum_BL};		// Which weapons the character respawns with.
 		Items[] = {FirstAidKit};				// Which items the character has.
 		RespawnItems[] = {FirstAidKit};			// Which items the character respawns with.
-		magazines[] = {Chemlight_green, Chemlight_green};				// What ammunition the character has.
-		respawnMagazines[] = {Chemlight_green, Chemlight_green};	
+		magazines[] = {hlc_5rnd_300WM_FMJ_AWM, hlc_5rnd_300WM_FMJ_AWM, hlc_5rnd_300WM_FMJ_AWM, hlc_5rnd_300WM_FMJ_AWM, hlc_5rnd_300WM_FMJ_AWM, Chemlight_green, Chemlight_green};				// What ammunition the character has.
+		respawnMagazines[] = {hlc_5rnd_300WM_FMJ_AWM, hlc_5rnd_300WM_FMJ_AWM, hlc_5rnd_300WM_FMJ_AWM, hlc_5rnd_300WM_FMJ_AWM, hlc_5rnd_300WM_FMJ_AWM, Chemlight_green, Chemlight_green};	
 		linkedItems[] = {MS_CTSFOPlateCarrier, PR_CTSFOBeret, ItemMap, ItemCompass, ItemWatch, ItemRadio};
 		respawnLinkedItems[] = {MS_CTSFOPlateCarrier, PR_CTSFOBeret, ItemMap, ItemCompass, ItemWatch, ItemRadio};
 	};
 	class PR_ARVOfficer : B_Soldier_base_F
 	{
+		class EventHandlers : EventHandlers
+		{
+			init = "(_this select 0) addPrimaryWeaponItem 'optic_arco_blk_f' ";
+		};
 		author = "Mercury Studios - Silence"
 		_generalMacro = "B_Soldier_F"; //unsure what this does
 		scope = 2;
@@ -306,8 +322,10 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {"\MS_PR\Uniforms\Data\sco19_uniform_co.jpg"};
 		weapons[] = {hlc_rifle_G36C, ms_tazer_yellow};				// Which weapons the character has.
 		respawnWeapons[] = {hlc_rifle_G36C, ms_tazer_yellow};		// Which weapons the character respawns with.
-		linkedItems[] = {PR_ARVHelmet, MS_LBT6094_SCO, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
-		respawnLinkedItems[] = {PR_ARVHelmet, MS_LBT6094_SCO, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
+		magazines[] = {hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, Chemlight_green, Chemlight_green};				// What ammunition the character has.
+		respawnMagazines[] = {hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, Chemlight_green, Chemlight_green};	
+		linkedItems[] = {MS_Opscore_Black, MS_FACP_SCO, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
+		respawnLinkedItems[] = {MS_Opscore_Black, MS_FACP_SCO, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
 	};
 	class PR_NCAUniformed : B_Soldier_base_F
 	{
@@ -391,6 +409,10 @@ class CfgVehicles
 	};
 	class PR_SCO19Officer : B_Soldier_base_F
 	{
+		class EventHandlers : EventHandlers
+		{
+			init = "(_this select 0) addPrimaryWeaponItem 'optic_holosight_smg_blk_f' ";
+		};
 		author = "Mercury Studios - Silence"
 		_generalMacro = "B_Soldier_F"; //unsure what this does
 		scope = 2;
@@ -404,6 +426,8 @@ class CfgVehicles
 		hiddenSelectionsTextures[] = {"\MS_PR\Uniforms\Data\sco19_uniform2_co.paa"};
 		weapons[] = {MS_MCXBlack, ms_tazer_yellow};				// Which weapons the character has.
 		respawnWeapons[] = {MS_MCXBlack, ms_tazer_yellow};		// Which weapons the character respawns with.
+		magazines[] = {hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, Chemlight_green, Chemlight_green};				// What ammunition the character has.
+		respawnMagazines[] = {hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, hlc_30rnd_556x45_EPR_G36, Chemlight_green, Chemlight_green};	
 		linkedItems[] = {PR_ARVHelmet, MS_SCOPlateCarrier, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
 		respawnLinkedItems[] = {PR_ARVHelmet, MS_SCOPlateCarrier, ItemMap, ItemCompass, ItemWatch, ItemRadio, NVGoggles};
 	};
@@ -482,24 +506,6 @@ class CfgVehicles
 		respawnWeapons[] = {};		// Which weapons the character respawns with.
 		linkedItems[] = {MS_RPUCore, MS_LBT6094_RPUAlt, MS_TacMask, ItemMap, ItemCompass, ItemWatch, ItemRadio};
 		respawnLinkedItems[] = {MS_RPUCore, MS_LBT6094_RPUAlt, MS_TacMask, ItemMap, ItemCompass, ItemWatch, ItemRadio};
-	};
-	class PR_CTSFOBeret : B_Soldier_base_F
-	{
-		author = "Mercury Studios - Silence"
-		_generalMacro = "B_Soldier_F"; //unsure what this does
-		scope = 2;
-		scopeCurator = 2;
-		displayName = "[PR] CTSFO - Beret";
-		faction = "pr_police";
-		editorSubcategory = "pr_police_sco";
-		nakedUniform = "U_BasicBody"; //class for "naked" body
-		uniformClass = "PR_CTSFOUniform"; //the uniform item
-		hiddenSelections[] = {"Camo"};
-		hiddenSelectionsTextures[] = {"\MS_PR\Uniforms\Data\clothing1_ctsfo_co.paa"};
-		weapons[] = {ms_tazer_yellow};				// Which weapons the character has.
-		respawnWeapons[] = {ms_tazer_yellow};		// Which weapons the character respawns with.
-		linkedItems[] = {ItemMap, ItemCompass, ItemWatch, ItemRadio};
-		respawnLinkedItems[] = {ItemMap, ItemCompass, ItemWatch, ItemRadio};
 	};
 	class PR_HEMSMedicUniform : B_Soldier_base_F
 	{
@@ -811,6 +817,26 @@ class CfgVehicles
 		hiddenSelections[] = {"Camo_1","Camo_2","Camo_3","Camo_4"};
 		hiddenSelectionsTextures[] = {"","","",""};
 		typicalCargo[] = {"PR_NPASPilot"};
+		availableForSupportTypes[] = {"Drop", "Transport"};
+	};
+	class O_Heli_Transport_04_medevac_F;
+	class PR_HEMSTaru: O_Heli_Transport_04_medevac_F
+	{
+		class EventHandlers: EventHandlers
+		{
+			init = "if (local (_this select 0)) then {(_this select 0) setVariable [""BIS_enableRandomization"",false];(_this select 0) setObjectTextureGlobal [1,""MS_PR\Vehicles\Data\hems_taru_main.jpg""];(_this select 0) setObjectTextureGlobal [0,""MS_PR\Vehicles\Data\hems_taru_secondary.jpg""];(_this select 0) setObjectTextureGlobal [3,""MS_PR\Vehicles\Data\hems_taru_pod.jpg""];(_this select 0) setObjectTextureGlobal [2,""MS_PR\Vehicles\Data\hems_taru_podsecondary.jpg""];};";
+		};
+		author = "Mercury Studios - Silence"
+		scope = 2;
+		_generalMacro = "O_Heli_Transport_04_covered_F";
+		side = 2;
+		faction = "pr_NHS";
+		editorSubcategory = "pr_nhs_HEMS";
+		displayName="HEMS Taru";
+		crew = "PR_HEMSPilotUniform";
+		hiddenSelections[] = {"Camo_1","Camo_2","Camo_3","Camo_4"};
+		hiddenSelectionsTextures[] = {"MS_PR\Vehicles\Data\hems_taru_main.jpg","MS_PR\Vehicles\Data\hems_taru_secondary.jpg","MS_PR\Vehicles\Data\hems_taru_pod.jpg","MS_PR\Vehicles\Data\hems_taru_podsecondary.jpg"};
+		typicalCargo[] = {"PR_HEMSPilotUniform"};
 		availableForSupportTypes[] = {"Drop", "Transport"};
 	};
 	class Hatchback_01_base_F;
