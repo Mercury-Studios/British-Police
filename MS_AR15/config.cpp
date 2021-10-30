@@ -46,10 +46,20 @@ class PointerSlot;
 class UnderBarrelSlot;
 class Rifle_Base_F;
 
+class GripodSlot;
+class asdg_SlotInfo;
+class asdg_FrontSideRail;
+class asdg_OpticRail1913;
+class asdg_OpticRail1913_short;
+class asdg_UnderSlot;
+class asdg_MuzzleSlot;
+class asdg_MuzzleSlot_556;
+
 class cfgWeapons
 {
+	class hlc_AR15_base;
 	class hlc_G36_base; // arifle_SPAR_01_base_F;
-	class AR15_Base: hlc_G36_base// arifle_SPAR_01_base_F /// Just basic values common for all testing rifle variants
+	class AR15_Base: hlc_AR15_base// arifle_SPAR_01_base_F /// Just basic values common for all testing rifle variants
 	{
 		magazines[] = {""}; /// original custom made magazines and a group of several standardized mags
 		descriptionShort = "A clean rifle developed by Armalite";//tooltip text
@@ -154,5 +164,13 @@ class cfgWeapons
 		weaponInfoType = "RscWeaponZeroing"; /// display with zeroing is good for iron sights
 
 		muzzles[] = {this}; /// to be able to switch between bullet muzzle and TGL
+		allowedslots[]={901};
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			mass=70.3;
+			class MuzzleSlot: asdg_MuzzleSlot_556 {};
+            class CowsSlot: asdg_OpticRail1913 {};
+			class UnderBarrelSlot: asdg_UnderSlot{};
+		};
 	};
 };
