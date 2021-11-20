@@ -1,7 +1,7 @@
 class CfgAmmo
 {
 	class BulletCore;
-	class B_Test_Caseless: BulletCore
+	class X26_Prong: BulletCore
 	{
 		hit = 10;indirectHit = 0;indirectHitRange = 0; /// seems like standard 6.5mm round
 		cartridge = "FxCartridge"; /// seems like standard 6.5mm round

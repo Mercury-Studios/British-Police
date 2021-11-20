@@ -29,8 +29,30 @@ www.benredmond.net
 */
 
 class Mode_SemiAuto;//importing an external class as we use the Mode_SemiAuto below
-class CfgWeapons//beginning of our cfgWeapons entry
+class CfgWeapons
 {
+	/*
+	class InventoryFlashLightItem_Base_F;
+	class X26_Laser
+	{
+		scope = 2;
+		displayName = "X26 Laser";
+
+		picture = "";
+		model = "MS_x26tazer\tazerlaser";
+		
+		class ItemInfo: InventoryFlashLightItem_Base_F
+		{
+			mass = 9;
+			class Pointer
+			{
+				irLaserPos = "laser pos";
+				irLaserEnd = "laser dir";
+			};
+			class FlashLight{};
+		};
+	};
+	*/
     class ItemCore;
     class PistolCore;   // External class reference
     class Pistol; 
@@ -48,7 +70,7 @@ class CfgWeapons//beginning of our cfgWeapons entry
         //units[] = {};
         displayName = "X26 Tazer";//Our item's name in the UI
         model = "\MS_x26tazer\tazera3";//relative path to the p3d file. The p3d suffix is likely unnecessary.
-        picture = "\MS_x26tazer\ms_logo.jpg";//UI image.
+        picture = "\MS_x26tazer\UI\gear_x26_blk_co.paa";//UI image.
         magazines[] = {"ms_tazerRound"};//list of magazines this weapon takes
         descriptionShort = "A tazer employed by law enforcement around the world";//tooltip text
         class Library {
@@ -80,7 +102,8 @@ class CfgWeapons//beginning of our cfgWeapons entry
                 begin1[] = {"A3\sounds_f\weapons\SMG_02\SMG_02_st_1b", 1.010000, 1, 600};//"sound file", volume modifier, unknown, audible distance in meters
                 begin2[] = {"A3\sounds_f\weapons\SMG_02\SMG_02_st_2b", 1.020000, 1, 600};
                 begin3[] = {"A3\sounds_f\weapons\SMG_02\SMG_02_st_3b", 1.000000, 1, 600};
-                soundBegin[] = {"begin1", 0.330000, "begin2", 0.330000, "begin3", 0.340000};//chance of sound playing. So 3 sounds = 33% each for a fair distribution.
+				// Original sound - A3\sounds_f\weapons\SMG_02\SMG_02_st_1b
+                soundBegin[] = {"begin1", 0.34, "begin2", 0.33, "begin3", 0.33};//chance of sound playing. So 3 sounds = 33% each for a fair distribution.
             };
             reloadTime = 2;//NOT the time to reload the magazine but the time in seconds between shots. It would more appropriately be called cycleTime.
             dispersion = 0.007000;//Accuracy. Lower values are higher accuracy. To find a realistic value you should consider your weapon's barrel length and quality and compare it to values from A3's weapons, plus test in-game.
@@ -121,7 +144,7 @@ class CfgWeapons//beginning of our cfgWeapons entry
         class WeaponSlotsInfo : WeaponSlotsInfo
         {
             holsterOffset = "holster";//named selection in the Memory LOD for the pistol's position when holstered. If not included the center is used. (Center of scene I believe, not center of geo)
-            holsterScale = 0.9;//scale of model in holster
+            holsterScale = 1;//scale of model in holster
             mass = 20;
             allowedSlots[] = {701,801,901};//what storage slots this item can "fit" in — clothing (701), vest(801), backpack(901).
             class MuzzleSlot : SlotInfo
@@ -137,7 +160,7 @@ class CfgWeapons//beginning of our cfgWeapons entry
             class PointerSlot : SlotInfo//side slot
             {
 				linkProxy = "\a3\data_f\proxies\weapon_slots\SIDE";
-                compatibleItems[] = {"hlc_acc_dbalpl","hlc_acc_dbalpl_fl", "acc_flashlight_pistol"};
+                compatibleItems[] = {"hlc_acc_dbalpl","hlc_acc_dbalpl_fl", "acc_flashlight_pistol", "X26_Laser"};
             };
         };
     };
@@ -146,7 +169,7 @@ class CfgWeapons//beginning of our cfgWeapons entry
         scope = 2;
         displayName = "X26 Tazer (Yellow)";//Our item's name in the UI
         model = "\MS_x26tazer\tazera3";//relative path to the p3d file. The p3d suffix is likely unnecessary.
-        picture = "\MS_x26tazer\ms_logo.jpg";//UI image.
+        picture = "\MS_x26tazer\UI\gear_x26_yel_co.paa";//UI image.
         magazines[] = {"ms_tazerRound"};//list of magazines this weapon takes
         descriptionShort = "A tazer employed by law enforcement around the world";//tooltip text
         class Library {
@@ -159,6 +182,7 @@ class CfgWeapons//beginning of our cfgWeapons entry
         reloadMagazineSound[] = {"A3\sounds_f\weapons\Reloads\pistols", 0.300000, 1, 50};//the first (0.3) number is the sound's loudness, while the last number is it's audible distance in meters.
 		hiddenSelections[] = {"taser", "magazine"};
 		hiddenSelectionsTextures[] = {"MS_x26tazer\taseryellow.jpg", "MS_x26tazer\cartridgegreen.jpg"};
+		hiddenSelectionsMaterials[] = {"MS_x26tazer\rvmats\taseryellow.rvmat", ""};
         drySound[] = {"A3\sounds_f\weapons\other\dry1", 0.330957, 1, 80};//sound played when the magazine is dry (empty).
         inertia = 0.60000;//Inertia value of the weapon — higher values = greater inertia. Weapons with a greater amount of weight towards their front should have higher inertia, like an M1 Garand compared to an MP5. 
         initSpeed = -1.02;//This is a 2% increase in the ammo's velocity for this weapon. This allows weapons with longer/better barrels to fire the same ammo as other weapons yet at a different muzzle velocity. A 2% decrease would be = -0.98;
@@ -221,7 +245,7 @@ class CfgWeapons//beginning of our cfgWeapons entry
         class WeaponSlotsInfo : WeaponSlotsInfo
         {
             holsterOffset = "holster"; //named selection in the Memory LOD for the pistol's position when holstered. If not included the center is used. (Center of scene I believe, not center of geo)
-            holsterScale = 0.9; //scale of model in holster
+            holsterScale = 1; //scale of model in holster
             mass = 20;
             allowedSlots[] = {701,801,901}; //what storage slots this item can "fit" in — clothing (701), vest(801), backpack(901).
             class MuzzleSlot : SlotInfo
@@ -237,7 +261,7 @@ class CfgWeapons//beginning of our cfgWeapons entry
             class PointerSlot : SlotInfo
             {
 				linkProxy = "\a3\data_f\proxies\weapon_slots\SIDE";
-                compatibleItems[] = {"hlc_acc_dbalpl","hlc_acc_dbalpl_fl", "acc_flashlight_pistol"};
+                compatibleItems[] = {"hlc_acc_dbalpl","hlc_acc_dbalpl_fl", "acc_flashlight_pistol", "X26_Laser"};
             };
         };
     };
@@ -246,7 +270,7 @@ class CfgWeapons//beginning of our cfgWeapons entry
         scope = 2;
         displayName = "X26 Tazer (Green)";
         model = "\MS_x26tazer\tazera3";
-        picture = "\MS_x26tazer\ms_logo.jpg";
+        picture = "\MS_x26tazer\UI\gear_x26_grn_co.paa";
         magazines[] = {"ms_tazerRound"};
         descriptionShort = "A tazer employed by law enforcement around the world";
         class Library {
@@ -256,6 +280,7 @@ class CfgWeapons//beginning of our cfgWeapons entry
         reloadMagazineSound[] = {"A3\sounds_f\weapons\Reloads\pistols", 0.300000, 1, 50};
 		hiddenSelections[] = {"taser", "magazine"};
 		hiddenSelectionsTextures[] = {"MS_x26tazer\tasergreen.jpg", "MS_x26tazer\cartridgegreen.jpg"};
+		hiddenSelectionsMaterials[] = {"MS_x26tazer\rvmats\taseryellow.rvmat", ""};
         drySound[] = {"A3\sounds_f\weapons\other\dry1", 0.330957, 1, 80};
         inertia = 0.60000;
         initSpeed = -1.02;
@@ -318,7 +343,7 @@ class CfgWeapons//beginning of our cfgWeapons entry
         class WeaponSlotsInfo : WeaponSlotsInfo
         {
             holsterOffset = "holster"; //named selection in the Memory LOD for the pistol's position when holstered
-            holsterScale = 0.9; //scale of model in holster
+            holsterScale = 1; //scale of model in holster
             mass = 20;
             allowedSlots[] = {701,801,901}; //what storage slots this item can "fit" in — clothing (701), vest(801), backpack(901).
             class MuzzleSlot : SlotInfo
@@ -334,7 +359,7 @@ class CfgWeapons//beginning of our cfgWeapons entry
             class PointerSlot : SlotInfo
             {
 				linkProxy = "\a3\data_f\proxies\weapon_slots\SIDE";
-                compatibleItems[] = {"hlc_acc_dbalpl","hlc_acc_dbalpl_fl", "acc_flashlight_pistol"};
+                compatibleItems[] = {"hlc_acc_dbalpl","hlc_acc_dbalpl_fl", "acc_flashlight_pistol", "X26_Laser"};
             };
         };
     };
